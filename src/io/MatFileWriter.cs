@@ -7,7 +7,7 @@ using System.Text;
 using csmatio.common;
 using csmatio.types;
 
-#if !NET20 && !NET40
+#if !NET20 && !NET40 && !NET45
 #error .NET-Version undefiniert
 #endif
 
@@ -15,7 +15,7 @@ using csmatio.types;
 using zlib = ComponentAce.Compression.Libs.ZLib;
 #endif
 
-#if NET40
+#if NET40 || NET45
 using System.IO.Compression;
 #endif
 
@@ -105,7 +105,7 @@ namespace csmatio.io
 
 					byte[] compressedBytes = compressed.ToArray();
 #endif
-#if NET40
+#if NET40 || NET45
 					uint s1 = 1, s2 = 0, crc = 0; // Adler-32 CRC
 					using (DeflateStream df = new DeflateStream(compressed, CompressionMode.Compress, true))
 					{

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>CSMatIO</id>
+    <version>1.0.0</version>
+    <authors>Sérgio aka AlienEnginner</authors>
+    <owners />
+    <licenseUrl>https://raw.githubusercontent.com/AlienEngineer/CSMatIO/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/AlienEngineer/CSMatIO/wiki</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>CSMatIO is a .NET Library to read, write, and manipulate Matlab binary MAT-files written by David Zier. He published his code on Matlab Central.</description>
+    <releaseNotes>
+
+    </releaseNotes>
+    <copyright>Copyright (c) 2015 AlienEngineer</copyright>
+    <tags>Matlab csmatio</tags>
+  </metadata>
+  <files>
+    <!-- Binaries -->
+    
+    <!-- .Net 4.0 -->    
+    <file src="bin\Release\net40\CSMatIO.dll" target="lib\net40\CSMatIO.dll" />
+    <file src="bin\Release\net40\CSMatIO.pdb" target="lib\net40\CSMatIO.pdb" />
+    <file src="bin\Release\net40\CSMatIO.xml" target="lib\net40\CSMatIO.xml" />
+
+    <!-- .Net 4.5 -->    
+    <file src="bin\Release\net45\CSMatIO.dll" target="lib\net45\CSMatIO.dll" />
+    <file src="bin\Release\net45\CSMatIO.pdb" target="lib\net45\CSMatIO.pdb" />
+    <file src="bin\Release\net45\CSMatIO.xml" target="lib\net45\CSMatIO.xml" />
+    
+  </files>
+</package>

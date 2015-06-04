@@ -6,7 +6,7 @@ using System.Text;
 using csmatio.common;
 using csmatio.types;
 
-#if !NET20 && !NET40
+#if !NET20 && !NET40 && !NET45
 #error .NET-Version undefiniert
 #endif
 
@@ -14,7 +14,7 @@ using csmatio.types;
 using zlib = ComponentAce.Compression.Libs.ZLib;
 #endif
 
-#if NET40
+#if NET40 || NET45
 using System.IO.Compression;
 #endif
 
@@ -207,8 +207,8 @@ namespace csmatio.io
 				inflatedStream.Position = 0;
 				return inflatedStream;
 #endif
-#if NET40
-				// skip CRC (at end) and zip format (0x789C at begin)
+#if NET40 || NET45
+                // skip CRC (at end) and zip format (0x789C at begin)
 				buf.Position += 2;
 				numOfBytes -= 6;
 

@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>VirtualObjects</id>
+    <version>1.0.0</version>
+    <authors>Sérgio aka AlienEnginner</authors>
+    <owners />
+    <licenseUrl>https://raw2.github.com/AlienEngineer/VirtualObjects/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/AlienEngineer/VirtualObjects/wiki/</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/AlienEngineer/VirtualObjects/master/ico/1391724652_40096.ico</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Easy and Fast ORM Framework</description>
+    <releaseNotes>
+
+      Version 1.3.21
+      * Feature #50: Allow custom data mapping.
+      * Fix: Error loading associated entities, Object reference not set to an instance of an object.
+      * Fix: Multiple calls to custom functions translated properly
+
+      Version 1.3.20
+      * Fix #49: Enums are not being treated as simple types.
+      * Feature #48: Allow usage of custom functions.
+
+      Version 1.3.19
+      * Fix: ExcelSession did not map models with Boolean fields.
+      * Fix: Query.GetEnumerator() in non generic version should be implemented.
+      * Allow access to underlying connection.
+      * Allow devs to specify isolation level.
+
+      Version 1.3.18
+      * Feature: Allow access to raw data. IDataReader GetRawData()
+      * Fix: Dll location on dynamic assembly load.
+      * Fix: PropertyTypes and FieldTypes added as reference of Dynamic created types.
+      * Fix: Wrong Null verification of fields in Dynamic mapping.
+      * Base type fields are mapped first and derived type fields follows.
+      * Fix: Named Connection via Repository scaffold were not properly set.
+
+      Version 1.3.17
+      * Change #41: ForeignKey fields should be decorated with ForeignKeyAttribute
+      * Small bug fixes.
+
+      Version 1.3.16
+      * Fix: Translation join into with group by clause was faulty.
+      * Linq #36: Support ToUpper and ToLower on string predicates and projections.
+      * Linq #38: Support ToString and Substring.
+      * Linq #40: Support Convert.ToXXX
+      * small bug fixes.
+
+      Version 1.3.15
+      * Fix: DerivedTypes didn't map at all.
+      * Fix: Throw exception when unable to compile generated code.
+      * Fix: Added base type assemblies to the code compiler.
+      * Fix #32: Added base type assemblies of generic arguments used on dynamic types to the code compiler.
+      * Feature: Generate code to files.
+      * -1: Removed scaffolders from this project. See VirtualObjects.Scaffolders nuget package.
+
+      Version 1.3.14
+      * Fix: Wrong convertion to SqlParameter over OLEDbConnection.
+      * Change: Joins now translate into Left Joins. Apply filter if needed.
+
+      Version 1.3.13
+      * Scaffold Feature: IRepository extension method to access transation and acquire the lock.
+      * Fix: Lock release must clear cached lock.
+      * Fix: Boolean should never be stored as null.
+      * Fix: StoreProcedure result was not captured.
+
+      Version 1.3.12
+      * Feature #28: Enable the transaction to create a lock.
+      * Feature #27: Enable the session to execute stored procedures.
+
+      Version 1.3.11
+      * Fix: After commit a close must be done.
+      * Fix: Values should be null if equal to the default type value.
+
+      Version 1.3.10
+      * Small bug fixes
+
+      Version 1.3.1
+      * Fix: Runtime Generated assemblies use the fullname to avoid collisions.
+      * Fix: Values need to be set to null when injected into db.
+      * Fix: Issue #17 (Count with boolean field and other predicates miss a ')').
+      * Fix: Issue #18 (When loading a collection field it should use the matching key fields to filter the collection.)
+      * Improvement: Scaffold business lets you choose the target folder.
+
+      Version 1.3.0
+      * MARS (Multiple Active Result Sets) support.
+      * IOC configurations handcoded. Removed Ninject overhead.
+      * Feature: All queries are now lazy loaded. .ToList() is required to obter data immediately.
+      * Fix: Connections were not properly closed sometimes.
+      * Fix: Scaffold Models remake using powershell only. Reason: sometimes wasn't possible to load assemblies needed.
+      * Improvement: Scaffold Models its a bit faster now.
+
+      Version 1.1.2
+      * Fix: Scaffold Models invalid path error.
+
+      Version 1.1.1
+      * Package update to the latest versions.
+
+      Version 1.1.0
+      * Fix: In some cases the keep alive was not enabling the rollback.
+      * Improvement: Dynamic generated assemblies are cached using the base assembly version.
+      * Improvement: Dynamic generated assemblies are cached near execution.
+      * Scaffold Fix: Limit the number of recursive tries to find the VirtualObjects package folder.
+
+      Version 1.1.0-rc
+      * Mapping performance improved.
+      * Lazy load of related fields, and related collection improved.
+      * Improved Bind of Related fields.
+      * Small bug fixes.
+
+      Version 1.0.7-Beta:
+      * Improved Scaffolders.
+      * Feature: Enable computed columns to be read.
+      * Linq Support: Count, Max, Min, Avg, Sum, etc. after group and joins.
+      * Linq Support: Use key member on projection.
+      * Linq Support: Join and Group.
+      * Linq Support: Group by multiple fields.
+
+      Version 1.0.6-Beta:
+      * Small bug fixes.
+      * Nuget package changes.
+
+      Version 1.0.2-Beta:
+      * Fixed: ForeignKeys were not fully mapped.
+      * Feature: Enable fields to be ignored.
+      * Added Scaffolder Models.
+      * Added Scaffolder Repository.
+      * Added Scaffolder Business.
+      * Added Scaffolder Config.
+
+      Version 1.0.1-Beta:
+      * Multiple bug fixes.
+      * Improved support for Linq with Unions and Dates.
+    </releaseNotes>
+    <copyright>Copyright (c) 2014 AlienEngineer</copyright>
+    <tags>ORM VirtualObjects DataBase Repository VODB ObjectRelationalMapping</tags>
+  </metadata>
+  <files>
+    <!-- Binaries -->
+    
+    <!-- .Net 4.0 -->    
+    <file src="bin\Release\net40\VirtualObjects.dll" target="lib\net40\VirtualObjects.dll" />
+    <file src="bin\Release\net40\VirtualObjects.pdb" target="lib\net40\VirtualObjects.pdb" />
+    <file src="bin\Release\net40\VirtualObjects.xml" target="lib\net40\VirtualObjects.xml" />
+
+    <!-- .Net 4.5 -->    
+    <file src="bin\Release\net45\VirtualObjects.dll" target="lib\net45\VirtualObjects.dll" />
+    <file src="bin\Release\net45\VirtualObjects.pdb" target="lib\net45\VirtualObjects.pdb" />
+    <file src="bin\Release\net45\VirtualObjects.xml" target="lib\net45\VirtualObjects.xml" />
+    
+    <!-- Content -->
+    <file src="content\config.transform" target="content\app.config.transform" />
+    <file src="content\config.transform" target="content\web.config.transform" />
+    
+  </files>
+</package>
