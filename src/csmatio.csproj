@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D6EB17BF-9074-484F-9950-E06169A3C39D}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>csmatio</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>csmatio</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <SignAssembly>false</SignAssembly>
+    <TargetFrameworkVersion Condition=" '$(TargetFrameworkVersion)' == '' ">v4.0</TargetFrameworkVersion>
+    <OutputPath>bin\$(Configuration)-$(TargetFrameworkVersion)\</OutputPath>
+    <BaseIntermediateOutputPath>obj-$(TargetFrameworkVersion)\</BaseIntermediateOutputPath>
+    <DocumentationFile>bin\$(Configuration)-$(TargetFrameworkVersion)\csmatio.XML</DocumentationFile>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <ErrorReport>prompt</ErrorReport>
+    <DefineTrace>true</DefineTrace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(TargetFrameworkVersion)' == 'v2.0' ">
+    <DefineConstants>NET20</DefineConstants>
+    <TargetFrameworkVersionNumber>2.0</TargetFrameworkVersionNumber>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(TargetFrameworkVersion)' == 'v4.0' ">
+    <DefineConstants>NET40</DefineConstants>
+    <TargetFrameworkVersionNumber>4.0</TargetFrameworkVersionNumber>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DefineDebug>true</DefineDebug>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DefineDebug>false</DefineDebug>
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <Reference Include="zlib.net, Version=1.0.3.0, Culture=neutral, PublicKeyToken=47d7877cb3620160"  Condition=" '$(TargetFrameworkVersion)' == 'v2.0' " >
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\zlib.net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="common\ByteBuffer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="common\Helpers.cs" />
+    <Compile Include="common\MatDataTypes.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="io\MatFileFilter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="io\MatFileHeader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="io\MatFileInputStream.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="io\MatFileReader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="io\MatFileWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="io\MatlabIOException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="io\MatTag.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="types\MLInt16.cs" />
+    <Compile Include="types\IByteStorageSupport.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="types\IGenericArrayCreator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="types\MLArray.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="types\MLCell.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="types\MLChar.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="types\MLDouble.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="types\MLEmptyArray.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="types\MLInt32.cs" />
+    <Compile Include="types\MLInt64.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="types\MLInt8.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="types\MLNumericArray.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="types\MLSingle.cs" />
+    <Compile Include="types\MLSparse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="types\MLStructure.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="types\MLUInt16.cs" />
+    <Compile Include="types\MLUInt32.cs" />
+    <Compile Include="types\MLUInt64.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="types\MLUint8.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
