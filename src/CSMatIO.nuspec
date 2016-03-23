@@ -2,8 +2,8 @@
 <package >
   <metadata>
     <id>CSMatIO</id>
-    <version>1.0.0</version>
-    <authors>Sérgio aka AlienEnginner</authors>
+    <version>1.0.1</version>
+    <authors>Sérgio aka AlienEnginner, Mike Williams</authors>
     <owners />
     <licenseUrl>https://raw.githubusercontent.com/AlienEngineer/CSMatIO/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/AlienEngineer/CSMatIO/wiki</projectUrl>
@@ -12,7 +12,7 @@
     <releaseNotes>
 
     </releaseNotes>
-    <copyright>Copyright (c) 2015 AlienEngineer</copyright>
+    <copyright>Copyright (c) 2016 Mike Williams, Copyright (c) 2015 AlienEngineer</copyright>
     <tags>Matlab csmatio</tags>
   </metadata>
   <files>
