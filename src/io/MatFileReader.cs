@@ -35,6 +35,7 @@ namespace csmatio.io
 	///		Hashtable content = mfr.Content;
 	/// </code>
 	/// </example>
+	/// <author>Mike Williams (<a href="https://github.com/mswillia/">mswillia</a>)</author>
 	/// <author>David Zier (<a href="mailto:david.zier@gmail.com">david.zier@gmail.com</a>)</author>
 	public class MatFileReader
 	{
@@ -54,7 +55,6 @@ namespace csmatio.io
 		/// Array name filter
 		/// </summary>
 		private MatFileFilter _filter;
-
 
 		/// <summary>
 		/// Creates instance of <c>MatFileReader</c> and reads MAT-file with then name
@@ -81,22 +81,26 @@ namespace csmatio.io
 		/// <param name="fileName">The name of the MAT-file to open</param>
 		/// <param name="filter"><c>MatFileFilter</c></param>
 		public MatFileReader(string fileName, MatFileFilter filter)
+			: this(new FileStream(fileName, FileMode.Open, FileAccess.Read), filter)
+		{
+		}
+
+		/// <summary>
+		/// Creates instance of <c>MatFileReader</c> and reads MAT-file from the
+		/// <c>FileStream</c>.
+		/// </summary>
+		/// <remarks>
+		/// Results are filtered by <c>MatFileFilter</c>.  Arrays that do not meet
+		/// filter match condition will not be available in results.
+		/// </remarks>
+		/// <param name="dataIn">The stream the MAT-stream will read</param>
+		/// <param name="filter"><c>MatFileFilter</c></param>
+		public MatFileReader(Stream dataIn, MatFileFilter filter)
 		{
 			_filter = filter;
 			_data = new Dictionary<string, MLArray>();
 
-			// Try to open up the file as read-only
-			FileStream dataIn;
-			try
-			{
-				dataIn = new FileStream(fileName, FileMode.Open, FileAccess.Read);
-			}
-			catch (FileNotFoundException)
-			{
-				throw new MatlabIOException("Could not open the file '" + fileName + "' for reading!");
-			}
-
-			// try and read in the file until completed
+			// try and read in the stream until completed
 			try
 			{
 				ReadHeader(dataIn);
@@ -112,14 +116,14 @@ namespace csmatio.io
 			}
 			catch (IOException e)
 			{
-				throw new MatlabIOException("Error in reading MAT-file '" + fileName + "':\n" + e.ToString());
+				throw new MatlabIOException("Error in reading MAT-stream:\n" + e.ToString());
 			}
 			finally
 			{
 				dataIn.Close();
 			}
 		}
-
+		
 		/// <summary>
 		/// Gets MAT-file header.
 		/// </summary>
@@ -208,7 +212,7 @@ namespace csmatio.io
 				return inflatedStream;
 #endif
 #if NET40 || NET45
-                // skip CRC (at end) and zip format (0x789C at begin)
+				// skip CRC (at end) and zip format (0x789C at begin)
 				buf.Position += 2;
 				numOfBytes -= 6;
 
@@ -240,7 +244,7 @@ namespace csmatio.io
 					}
 					while (data != -1);
 				}
-				decompressedStream.Position = 0; 
+				decompressedStream.Position = 0;
 				return decompressedStream;
 #endif
 			}
@@ -412,14 +416,14 @@ namespace csmatio.io
 					//read real
 					tag = new ISMatTag(buf);
 					tag.ReadToByteBuffer(((MLNumericArray<double>)mlArray).RealByteBuffer,
-                        (IByteStorageSupport)mlArray);
+						(IByteStorageSupport)mlArray);
 
 					// read complex
 					if (mlArray.IsComplex)
 					{
 						tag = new ISMatTag(buf);
 						tag.ReadToByteBuffer(((MLNumericArray<double>)mlArray).ImaginaryByteBuffer,
-                            (IByteStorageSupport)mlArray);
+							(IByteStorageSupport)mlArray);
 					}
 					break;
 				case MLArray.mxSINGLE_CLASS:
@@ -534,14 +538,14 @@ namespace csmatio.io
 					//read real
 					tag = new ISMatTag(buf);
 					tag.ReadToByteBuffer(((MLNumericArray<ulong>)mlArray).RealByteBuffer,
-                        (IByteStorageSupport)mlArray);
+						(IByteStorageSupport)mlArray);
 
 					// read complex
 					if (mlArray.IsComplex)
 					{
 						tag = new ISMatTag(buf);
-                        tag.ReadToByteBuffer(((MLNumericArray<ulong>)mlArray).ImaginaryByteBuffer,
-                            (IByteStorageSupport)mlArray);
+						tag.ReadToByteBuffer(((MLNumericArray<ulong>)mlArray).ImaginaryByteBuffer,
+							(IByteStorageSupport)mlArray);
 					}
 					break;
 				case MLArray.mxINT64_CLASS:
@@ -549,14 +553,14 @@ namespace csmatio.io
 					//read real
 					tag = new ISMatTag(buf);
 					tag.ReadToByteBuffer(((MLNumericArray<long>)mlArray).RealByteBuffer,
-                        (IByteStorageSupport)mlArray);
+						(IByteStorageSupport)mlArray);
 
 					// read complex
 					if (mlArray.IsComplex)
 					{
 						tag = new ISMatTag(buf);
-                        tag.ReadToByteBuffer(((MLNumericArray<long>)mlArray).ImaginaryByteBuffer,
-                            (IByteStorageSupport)mlArray);
+						tag.ReadToByteBuffer(((MLNumericArray<long>)mlArray).ImaginaryByteBuffer,
+							(IByteStorageSupport)mlArray);
 					}
 					break;
 				case MLArray.mxCHAR_CLASS:
@@ -773,7 +777,7 @@ namespace csmatio.io
 			///// </summary>
 			//public int Size
 			//{
-			//    get { return (int)Buf.BaseStream.Length; }
+			//	get { return (int)Buf.BaseStream.Length; }
 			//}
 
 			/// <summary>
@@ -781,7 +785,7 @@ namespace csmatio.io
 			/// </summary>
 			/// <param name="buff"><c>ByteBuffer</c></param>
 			/// <param name="storage"><c>ByteStorageSupport</c></param>
-			public void ReadToByteBuffer( ByteBuffer buff, IByteStorageSupport storage )
+			public void ReadToByteBuffer(ByteBuffer buff, IByteStorageSupport storage)
 			{
 				MatFileInputStream mfis = new MatFileInputStream(Buf, _type);
 				int elements = _size / SizeOf();
